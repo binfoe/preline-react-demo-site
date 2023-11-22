@@ -15,13 +15,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
       </head>
-      <body className='mb-[56px] dark:bg-slate-900 sm:mb-[116px]'>
+      <body className='mb-[56px]  dark:bg-slate-900 sm:mb-[116px]'>
         <Header />
-        <div className='mx-auto flex max-w-[90rem]'>
-          <div className='relative -my-8 space-y-8 px-8 pb-10 pt-7 lg:my-0'>
+        <div className='mx-auto flex h-[calc(100vh-70px)] max-w-[90rem]'>
+          <div className='-my-8 h-full space-y-8 overflow-y-auto overflow-x-hidden px-8 pb-10 pt-7 lg:my-0'>
             <Nav />
           </div>
-          <div className='flex-1 px-4 pt-10 sm:px-6 md:px-8 lg:ps-[22rem]'>{children}</div>
+          <div className='flex-1 overflow-y-auto overflow-x-hidden px-4 pt-10 sm:px-6 md:px-8'>
+            {children}
+          </div>
         </div>
       </body>
     </html>

@@ -3,7 +3,7 @@ import { BsGithub, BsMoon } from 'react-icons/bs';
 
 export const Header: FC = () => {
   return (
-    <header className='sticky inset-x-0 top-0 z-50 flex w-full flex-wrap border-b bg-white py-2.5 text-sm dark:border-gray-700 dark:bg-slate-900 sm:flex-nowrap sm:justify-start sm:py-4'>
+    <header className='sticky inset-x-0 top-0 z-50 flex h-[70px] w-full flex-wrap border-b bg-white py-2.5 text-sm dark:border-gray-700 dark:bg-slate-900 sm:flex-nowrap sm:justify-start sm:py-4'>
       <nav
         className='mx-auto flex w-full basis-full flex-nowrap items-center px-4 sm:px-6 md:px-8 lg:max-w-[90rem]'
         aria-label='Global'
@@ -79,13 +79,9 @@ export const Header: FC = () => {
               >
                 <BsGithub />
               </a>
-              <a
-                className='inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-medium text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600'
-                href='javascript:void;'
-                target='_blank'
-              >
+              <button className='inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full font-medium text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600'>
                 <BsMoon />
-              </a>
+              </button>
             </div>
           </div>
         </div>

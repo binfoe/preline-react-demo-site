@@ -2,11 +2,25 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { NavMenu } from 'preline-react';
+import { NavMenu } from 'preline-react/lib/menu';
+import { useNonFirstEffect } from 'preline-react/lib/util';
 import { MenuItemProps } from 'preline-react/src/menu/common';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 
-const DemoMenuItems = [
+function a(t: string) {
+  return {
+    name: (
+      <a
+        target='_blank'
+        href={`https://www.preline.co/docs/${t.replace(/\s+/g, '-').toLowerCase()}.html`}
+      >
+        {t}
+      </a>
+    ),
+    key: t,
+  };
+}
+const MenuItems: MenuItemProps[] = [
   {
     name: (
       <a href='https://www.preline.co/index.html' target='_blank'>
@@ -19,40 +33,30 @@ const DemoMenuItems = [
     name: 'Content',
     key: 'content',
     children: [
-      {
-        name: (
-          <a href='https://www.preline.co/docs/typography.html' target='_blank'>
-            Typography
-          </a>
-        ),
-        key: 'typo',
-      },
-      {
-        name: (
-          <a href='https://www.preline.co/docs/images.html' target='_blank'>
-            Images
-          </a>
-        ),
-        key: 'images',
-      },
+      a('Typography'),
+      a('Images'),
+      a('Links'),
+      a('Dividers'),
+      a('KBD'),
+      a('Custom Scrollbar'),
     ],
   },
   {
     name: 'Basic Components',
     key: 'basic',
     children: [
+      a('Alerts'),
+      a('Avatar'),
+      {
+        name: <Link href='/avatar-group'>Avatar Group</Link>,
+        key: '/avatar-group',
+      },
+      a('Badge'),
       {
         name: <Link href='/button'>Buttons</Link>,
         key: '/button',
       },
-      {
-        name: (
-          <a href='https://www.preline.co/docs/timeline.html' target='_blank'>
-            Timeline
-          </a>
-        ),
-        key: 'Timeline',
-      },
+      a('Timeline'),
     ],
   },
   {
@@ -142,23 +146,23 @@ function findMenuPath(marr: (MenuItemProps | '-')[], pn: string): MenuItemProps[
 export const Nav: FC = () => {
   const pathname = usePathname();
   const [openKeys, setOpenKeys] = useState<string[]>(() => {
-    return DemoMenuItems.filter((item) => item.children?.length).map((item) => item.key);
+    return MenuItems.filter((item) => item.children?.length).map((item) => item.key);
   });
-  const [selectKeys, setSelectKeys] = useState<string[]>([]);
+  const [selectKeys, setSelectKeys] = useState<string[]>(pathname ? [pathname] : []);
 
-  useEffect(() => {
+  useNonFirstEffect(() => {
     setSelectKeys(pathname ? [pathname] : []);
     if (!pathname) {
       return;
     }
-    const mpath = findMenuPath(DemoMenuItems, pathname);
+    const mpath = findMenuPath(MenuItems, pathname);
     const keys = mpath.filter((menu) => !!menu.children?.length).map((menu) => menu.key);
     setOpenKeys((oldKeys) => [...new Set([...oldKeys, ...keys]).values()]);
   }, [pathname]);
 
   return (
     <NavMenu
-      items={DemoMenuItems}
+      items={MenuItems}
       openKeys={openKeys}
       selectedKeys={selectKeys}
       onSelect={(keys) => {
