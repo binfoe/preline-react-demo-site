@@ -46,10 +46,12 @@ const InputDemo: FC = () => {
         </div>
       </div>
       <div className='m-4 border p-5'>
-        <div>
+        <div className='flex gap-2'>
+          <h3>Radio Group:</h3>
           <RadioGroup options={Options} />
         </div>
-        <div>
+        <div className='flex gap-2'>
+          <h3>Checkbox Group:</h3>
           <CheckboxGroup
             options={Options}
             value={v2}

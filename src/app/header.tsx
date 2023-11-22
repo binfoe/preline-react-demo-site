@@ -3,7 +3,7 @@ import { BsGithub, BsMoon } from 'react-icons/bs';
 
 export const Header: FC = () => {
   return (
-    <header className='sticky inset-x-0 top-0 z-50 flex h-[70px] w-full flex-wrap border-b bg-white py-2.5 text-sm dark:border-gray-700 dark:bg-slate-900 sm:flex-nowrap sm:justify-start sm:py-4'>
+    <header className='sticky inset-x-0 top-0 flex h-[70px] w-full flex-wrap border-b bg-white py-2.5 text-sm dark:border-gray-700 dark:bg-slate-900 sm:flex-nowrap sm:justify-start sm:py-4'>
       <nav
         className='mx-auto flex w-full basis-full flex-nowrap items-center px-4 sm:px-6 md:px-8 lg:max-w-[90rem]'
         aria-label='Global'

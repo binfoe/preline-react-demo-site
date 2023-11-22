@@ -7,17 +7,24 @@ import { useNonFirstEffect } from 'preline-react/lib/util';
 import { MenuItemProps } from 'preline-react/src/menu/common';
 import { FC, useState } from 'react';
 
-function a(t: string) {
+function a(t: string, p?: string) {
   return {
     name: (
       <a
         target='_blank'
-        href={`https://www.preline.co/docs/${t.replace(/\s+/g, '-').toLowerCase()}.html`}
+        href={`https://www.preline.co/docs/${p || t.replace(/\s+/g, '-').toLowerCase()}.html`}
       >
         {t}
       </a>
     ),
     key: t,
+  };
+}
+function l(t: string, p?: string) {
+  const href = `/${p || t.replace(/\s+/g, '-').toLowerCase()}`;
+  return {
+    name: <Link href={href}>{t}</Link>,
+    key: href,
   };
 }
 const MenuItems: MenuItemProps[] = [
@@ -39,6 +46,7 @@ const MenuItems: MenuItemProps[] = [
       a('Dividers'),
       a('KBD'),
       a('Custom Scrollbar'),
+      l('zIndex'),
     ],
   },
   {
@@ -47,15 +55,27 @@ const MenuItems: MenuItemProps[] = [
     children: [
       a('Alerts'),
       a('Avatar'),
-      {
-        name: <Link href='/avatar-group'>Avatar Group</Link>,
-        key: '/avatar-group',
-      },
+      l('Avatar Group'),
       a('Badge'),
-      {
-        name: <Link href='/button'>Buttons</Link>,
-        key: '/button',
-      },
+      l('Button'),
+      a('Button Group'),
+      a('Card'),
+      a('Chat Bubbles'),
+      a('Carousel'),
+      a('Collapse'),
+      a('Datepicker'),
+      a('Devices'),
+      a('Lists'),
+      a('List Group'),
+      a('Legend Indicator'),
+      l('Progress'),
+      a('File Uploading Progress', 'file-uploading-progress-form'),
+      a('Ratings'),
+      l('Skeleton'),
+      l('Spinner'),
+      a('Static Icons'),
+      l('Stepper'),
+      l('Toast'),
       a('Timeline'),
     ],
   },
@@ -63,65 +83,65 @@ const MenuItems: MenuItemProps[] = [
     name: 'Navigations',
     key: 'Navigations',
     children: [
-      {
-        name: <Link href='/app-menu'>App Menu</Link>,
-        key: '/app-menu',
-      },
+      a('Mega Menu'),
+      a('Scrollspy'),
+      l('App Menu'),
+      l('Nav Menu'),
+      l('Tab'),
+      l('Breadcrumb'),
+      l('Pagination'),
     ],
   },
   {
     name: 'Basic Forms',
     key: 'Basic Forms',
     children: [
-      {
-        name: <Link href='/input'>Input</Link>,
-        key: '/input',
-      },
+      l('Input'),
+      l('TextArea'),
+      a('Input Group'),
+      l('Switch'),
+      l('Select'),
+      l('Radio'),
+      l('Checkbox'),
+      l('Form State'),
+      l('Range Slider'),
+      a('Color Picker'),
     ],
   },
   {
     name: 'Advance Forms',
     key: 'Advance Forms',
     children: [
-      {
-        name: <Link href='/number-input'>Number Input</Link>,
-        key: '/input-number',
-      },
+      a('Input Number'),
+      a('Strong Password'),
+      a('Toggle Password'),
+      a('Toggle Count'),
+      a('Copy Markup'),
+      a('Pin Input'),
     ],
   },
   {
     name: 'Overlays',
     key: 'overlay',
     children: [
-      {
-        name: <Link href='/tooltip'>Tooltip</Link>,
-        key: '/tooltip',
-      },
+      l('Tooltip'),
+      l('Popover'),
+      l('Modal'),
+      l('Popup'),
+      l('Popconfirm'),
+      l('Drawer'),
+      l('Dropdown'),
     ],
   },
   {
     name: 'Data Display',
     key: 'data-display',
-    children: [
-      {
-        name: <Link href='/table'>Table</Link>,
-        key: '/table',
-      },
-    ],
+    children: [l('Table')],
   },
   {
     name: 'Third Party Plugins',
     key: 'third-p-p',
-    children: [
-      {
-        name: (
-          <a href='https://www.preline.co/docs/text-editor.html' target='_blank'>
-            WYSIWYG Editor
-          </a>
-        ),
-        key: 'wysiwyg',
-      },
-    ],
+    children: [a('Charts'), a('Datamaps'), a('WYSIWYG Editor', 'text-editor'), a('Clipboard')],
   },
 ];
 

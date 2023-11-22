@@ -30,6 +30,12 @@ const ProgressDemo: FC = () => {
         <h3>Mini</h3>
         <Progress label={false} value={v} />
       </div>
+      <div className='text-xl'>
+        More At:{' '}
+        <a className='underline' href='https://www.preline.co/docs/progress.html' target='_blank'>
+          Preline UI - Progress
+        </a>
+      </div>
     </div>
   );
 };
