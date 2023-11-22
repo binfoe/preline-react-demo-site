@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import { BlockQuote } from 'preline-react';
+import { BlockQuote } from 'preline-react/lib/blockquote';
 
 const BlockquoteDemo: FC = () => {
   return (

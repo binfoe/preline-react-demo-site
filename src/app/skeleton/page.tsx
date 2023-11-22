@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Skeleton } from 'preline-react';
+import { Skeleton } from 'preline-react/lib/skeleton';
 
 const SkeletonDemo: FC = () => {
   return (
